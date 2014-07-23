@@ -1,0 +1,20 @@
+* circuit
+Vin  1 0  DC 0 AC 1 SIN(0V 2V 20Hz)
+R1   1 2  47
+Q1   out 2 0  npn-trans
+R2   out 3  47
+Vcc  3 0  DC  10V
+
+.model npn-trans npn
+
+.CONTROL
+  * Transient analysis
+  * initial step : 10ms
+  * ends : 100ms
+  * start : 0ms
+  * max step : 1ms
+  tran 10ms 100ms 0 1ms
+  plot V(1), V(out)
+.ENDC
+
+.END
