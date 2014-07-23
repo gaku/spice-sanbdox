@@ -1,0 +1,20 @@
+Common Collector Circuit
+* The first line of the file looks like the title line.
+
+Vin 1 0
+Q1  2 1 3 npn-transistor
+V1  2 0 DC 15V
+Rload 3 0 5k
+
+.model npn-transistor NPN
+
+.CONTROL
+  * Chaing Vin from 0V to 5V, every 0.01V increment
+  dc Vin 0 5 0.01
+  * Plot Voltage of node 3
+  plot v(3)
+  * Other spice software does
+  * plot dc v(3,0)
+.ENDC
+
+.END
