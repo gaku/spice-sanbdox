@@ -1,0 +1,22 @@
+** NPN transistor circuit
+*
+* Q <collector> <base> <emittor> modelname
+
+Vin 1 0  AC 1
+Rs  1 2  1
+C1  2 3  100uF
+Rb  3 5  465k
+Rc  5 4  3k
+Vcc 5 0  DC  10V
+Q1  4 3 0 npn-trans
+
+.model npn-trans npn (is=2e-15 bf=100 vaf=200)
+* Calculation of the operating point and small signal parameters (??)
+.CONTROL
+* Calcuration of the small signal gain
+* Run the AC analysis (100Hz to 10kHz)
+ac dec 10 100 10k
+plot vm(4)
+.ENDC
+
+.END
