@@ -1,0 +1,11 @@
+* Zener Diode Voltage Regulator
+Vin 1 0 DC 9V
+R1 1 2 47
+D1 0 2 zener
+.model zener D (BV=3.3)
+.control
+** DC from 0V to 9V with 0.5V increment
+dc Vin 0 9 0.5
+print v(1) i(Vin) v(2)
+.endc
+.end
